@@ -1,15 +1,15 @@
 {
-    "name": "SpamX - RiZoeLX",
+    "name": "BWFSPAM - RiZoeLX",
     "description": "A Pyrogram Based Spam Bots, Fast And Stable",
     "logo": "https://telegra.ph/file/ec832fc9107fd21edfee3.jpg",
     "keywords": [
         "telegram",
         "PYROGRAM",
         "telegram-bot",
-        "SpamX",
+        "BWFSPAM",
         "RiZoeLX"
     ],
-    "repository": "https://github.com/RiZoeLX/SpamX",
+    "repository": "https://github.com/RiZoeLX/BWFSPAM",
     "website": "https://github.com/RiZoeLX",
     "success_url": "https://t.me/RiZoeL_X",
     "env": {

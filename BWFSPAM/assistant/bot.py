@@ -9,9 +9,9 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import MessageTooLong
 
-from . import TheSpamX
-from SpamX.functions.messages import start_message
-from SpamX.functions.keyboard import (
+from . import TheBWFSPAM
+from BWFSPAM.functions.messages import start_message
+from BWFSPAM.functions.keyboard import (
     start_keyboard,
     manage_clients_keyboard,
     other_keyboard,
@@ -25,20 +25,20 @@ from SpamX.functions.keyboard import (
     filters.private & filters.command("start")
 )
 async def start_bot(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     if len(message.command) > 1:
         deep_cmd = message.text.split(None, 1)[1]
         if deep_cmd.lower() == "reboot":
-            if await TheSpamX.sudo.sudoFilter(message, 1):
+            if await TheBWFSPAM.sudo.sudoFilter(message, 1):
                 return
             await message.reply(
-                "__Click below button to reboot the SpamX!__",
+                "__Click below button to reboot the BWFSPAM!__",
                 reply_markup=reboot_button,
             )
             return
         if deep_cmd.lower() == "help":
-            await TheSpamX.help(message.chat.id)
+            await TheBWFSPAM.help(message.chat.id)
             return
     await message.reply(
         start_message.format(message.from_user.mention),
@@ -49,7 +49,7 @@ async def start_bot(_, message: Message):
     filters.private & filters.regex("Home 🏠")
 )
 async def start_home(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     await message.reply(
         start_message.format(message.from_user.mention),
@@ -60,26 +60,26 @@ async def start_home(_, message: Message):
     filters.private & filters.regex("❓Help")
 )
 async def help_key(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
-    await TheSpamX.help(message.chat.id)
+    await TheBWFSPAM.help(message.chat.id)
 
 @Client.on_message(
     filters.private & filters.command("help")
 )
 async def help_cmd(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
-    await TheSpamX.help(message.chat.id)
+    await TheBWFSPAM.help(message.chat.id)
 
 @Client.on_message(
     filters.private & filters.command(["reboot", "restart"]) | filters.regex("Restart|Reboot")
 )
 async def reboot(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
     await message.reply(
-        "__Click below button to reboot the SpamX!__",
+        "__Click below button to reboot the BWFSPAM!__",
         reply_markup=reboot_button,
     )
 
@@ -87,25 +87,25 @@ async def reboot(_, message: Message):
     filters.command("ping")
 )
 async def pinging(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     start = datetime.datetime.now()
-    #u_time = int(int(time.time()) - int(TheSpamX.startTime))
-    #uptime = await TheSpamX.functions.get_time(time=u_time)
+    #u_time = int(int(time.time()) - int(TheBWFSPAM.startTime))
+    #uptime = await TheBWFSPAM.functions.get_time(time=u_time)
     pong_msg = await message.reply("**Pong !!**")
     end = datetime.datetime.now()
     ms = (end-start).microseconds / 1000
     try:
-        await pong_msg.edit_text(f"⌾ {TheSpamX.pingMsg} ⌾ \n\n ༝ ᴘɪɴɢ: `{ms}` ᴍs \n ༝ ᴠᴇʀsɪᴏɴ: `{TheSpamX.versions['SpamX']}`")
+        await pong_msg.edit_text(f"⌾ {TheBWFSPAM.pingMsg} ⌾ \n\n ༝ ᴘɪɴɢ: `{ms}` ᴍs \n ༝ ᴠᴇʀsɪᴏɴ: `{TheBWFSPAM.versions['BWFSPAM']}`")
     except:
-        await pong_msg.edit_text(f"⌾ {TheSpamX.pingMsg} ⌾ \n\n ༝ ᴘɪɴɢ: `{ms}` ᴍs \n ༝ ᴠᴇʀsɪᴏɴ: `{TheSpamX.versions['SpamX']}`")
+        await pong_msg.edit_text(f"⌾ {TheBWFSPAM.pingMsg} ⌾ \n\n ༝ ᴘɪɴɢ: `{ms}` ᴍs \n ༝ ᴠᴇʀsɪᴏɴ: `{TheBWFSPAM.versions['BWFSPAM']}`")
         await pong_msg.delete()
 
 @Client.on_message(
-    filters.regex("🔹 Manage Clients 🔹") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("🔹 Manage Clients 🔹") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def manage_clients(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     await message.reply(
         "**🔹 Please select 🔹**",
@@ -113,10 +113,10 @@ async def manage_clients(_, message: Message):
     )
 
 @Client.on_message(
-    filters.regex("Other ↗️|🔙") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("Other ↗️|🔙") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def other_(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     await message.reply(
         "**🔹 Please select 🔹**",
@@ -124,13 +124,13 @@ async def other_(_, message: Message):
     )
 
 @Client.on_message(
-    filters.regex("👥 Sudo Users") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("👥 Sudo Users") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def sudo_users(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message):
+    if await TheBWFSPAM.sudo.sudoFilter(message):
         return
     await message.reply(
-        "**🔸 SpamX - Sudo Panel (Please select)**",
+        "**🔸 BWFSPAM - Sudo Panel (Please select)**",
         reply_markup=sudo_keyboard,
     )
 
@@ -138,10 +138,10 @@ async def sudo_users(_, message: Message):
     filters.regex("🔒 Restrictions") & filters.private
 )
 async def restrictions(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message):
+    if await TheBWFSPAM.sudo.sudoFilter(message):
         return
     await message.reply(
-        "**🔸 SpamX - Restriction Chat Panel (Please select)**",
+        "**🔸 BWFSPAM - Restriction Chat Panel (Please select)**",
         reply_markup=restriction_keyboard,
     )
 
@@ -153,10 +153,10 @@ async def aexec(code, client, message):
     return await locals()["__aexec"](client, message)
 
 @Client.on_message(
-    filters.command("eval") #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.command("eval") #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def runeval(client: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
     if len(message.command) < 2:
         return await message.reply_text("❎ No python code provided! (client: Client, message: message)")
@@ -208,8 +208,8 @@ async def runeval(client: Client, message: Message):
 @Client.on_message(
     filters.command("update") & filters.private
 )
-async def updateSpamX(SpamX: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+async def updateBWFSPAM(BWFSPAM: Client, message: Message):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
     try:
         out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
@@ -221,15 +221,15 @@ async def updateSpamX(SpamX: Client, message: Message):
         await message.reply_text(str(e))
         return
     await message.reply_text("**Updated with main branch, restarting now.**")
-    args = [sys.executable, "-m", "SpamX"]
+    args = [sys.executable, "-m", "BWFSPAM"]
     os.execl(sys.executable, *args)
     quit()
 
 @Client.on_message(
     filters.command("setvar") & filters.private
 )
-async def setvar(SpamX: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+async def setvar(BWFSPAM: Client, message: Message):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
     args = "".join(message.text.split(maxsplit=1)[1:]).split(" ", 1)
     if len(args) == 2:
@@ -237,16 +237,16 @@ async def setvar(SpamX: Client, message: Message):
         if check_var.upper() in ["HANDLER", "PING_MSG", "ALIVE_MSG", "ALIVE_MEDIA", "MULTITASK"]:
             var = check_var
         else:
-            await message.reply_text(f"Wrong variable! All Variables given below 👇\n\n `HANDLER`, `PING_MSG`, `ALIVE_MSG`, `MULTITASK`, `ALIVE_MEDIA` \n\n © @{TheSpamX.updateChannel}")
+            await message.reply_text(f"Wrong variable! All Variables given below 👇\n\n `HANDLER`, `PING_MSG`, `ALIVE_MSG`, `MULTITASK`, `ALIVE_MEDIA` \n\n © @{TheBWFSPAM.updateChannel}")
             return
         value = str(args[1])
         try:
             os.system(f"dotenv set {var} {value}")
             await message.reply_text("**success ✓ wait for re-start**")
-            args = [sys.executable, "-m", "SpamX"]
+            args = [sys.executable, "-m", "BWFSPAM"]
             os.execl(sys.executable, *args)
             quit()
         except Exception as error:
-            await message.reply_text(f"Error: {error} \n\n Report in @{TheSpamX.supportGroup}")
+            await message.reply_text(f"Error: {error} \n\n Report in @{TheBWFSPAM.supportGroup}")
     else:
-        await message.reply_text(f"**Wrong Usage** \n Syntax: {TheSpamX.handler}setvar (var name) (value)")
+        await message.reply_text(f"**Wrong Usage** \n Syntax: {TheBWFSPAM.handler}setvar (var name) (value)")

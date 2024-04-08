@@ -1,12 +1,12 @@
 from pyrogram import idle
-from SpamX.functions.clients import TheSpamX
+from BWFSPAM.functions.clients import TheBWFSPAM
 
 async def main():
-    await TheSpamX.startup()
-    TheSpamX.logs.info("-- SpamX started --")
+    await TheBWFSPAM.startup()
+    TheBWFSPAM.logs.info("-- BWFSPAM started --")
     await idle()
-    await TheSpamX.SpamX.stop()
-    await TheSpamX.stopAllClients()
+    await TheBWFSPAM.BWFSPAM.stop()
+    await TheBWFSPAM.stopAllClients()
 
 if __name__ == "__main__":
-    TheSpamX.run(main())
+    TheBWFSPAM.run(main())

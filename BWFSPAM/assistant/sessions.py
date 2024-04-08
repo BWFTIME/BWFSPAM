@@ -1,8 +1,8 @@
 import asyncio
 
-from . import TheSpamX
-from SpamX.config import API_ID, API_HASH
-from SpamX.functions.keyboard import gen_inline_keyboard
+from . import TheBWFSPAM
+from BWFSPAM.config import API_ID, API_HASH
+from BWFSPAM.functions.keyboard import gen_inline_keyboard
 
 from pyrogram import Client, filters
 from pyrogram.types import (
@@ -22,18 +22,18 @@ from pyrogram.errors import (
 
 
 @Client.on_message(
-    filters.regex("🔸 Get All Clients 🔸") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("🔸 Get All Clients 🔸") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def get_all_clients(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 2):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 2):
         return
-    if len(TheSpamX.clients) == 0:
+    if len(TheBWFSPAM.clients) == 0:
         await message.reply("__You have 0 clients__")
         return
     wait = await message.reply("__getting clients__ ....", reply_markup=ReplyKeyboardRemove())
-    clientText = f"**{TheSpamX.SpamX.me.mention} all Clients**\n\n"
+    clientText = f"**{TheBWFSPAM.BWFSPAM.me.mention} all Clients**\n\n"
     clientNo = 0
-    for client in TheSpamX.clients:
+    for client in TheBWFSPAM.clients:
         clientNo += 1
         clientText += f"**{clientNo})** {client.me.mention}, User ID: `{client.me.id}`\n"
 
@@ -45,7 +45,7 @@ async def get_all_clients(_, message: Message):
     filters.private & filters.command("get")
 )
 async def get_client(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
     try:
         user_id = int(message.command[1])
@@ -54,7 +54,7 @@ async def get_client(_, message: Message):
         return
     wait = await message.reply(f"__getting {user_id} in DB.....__")
     clientNo = 0
-    for c in TheSpamX.clients:
+    for c in TheBWFSPAM.clients:
         clientNo += 1
         if c.me.id == user_id:
             client = c
@@ -63,7 +63,7 @@ async def get_client(_, message: Message):
             client = None
 
     if client:
-        details = "**SpamX Clients details** \n\n"
+        details = "**BWFSPAM Clients details** \n\n"
         details += f" **- Number: {clientNo}** \n"
         if client.me.is_bot:
             details += " **- Type: Bot** \n"
@@ -82,10 +82,10 @@ async def get_client(_, message: Message):
     await wait.delete()
 
 @Client.on_message(
-    filters.regex("➕ Add Client") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("➕ Add Client") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def add_client(RiZoeL: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message):
+    if await TheBWFSPAM.sudo.sudoFilter(message):
         return
     clientString: Message = await RiZoeL.ask(
         message.from_user.id,
@@ -115,20 +115,20 @@ async def add_client(RiZoeL: Client, message: Message):
     checking = await message.reply("__checking...__")
 
     if is_bot:
-        SpamXClient = Client(
-            f"SpamX-{bot_id}",
+        BWFSPAMClient = Client(
+            f"BWFSPAM-{bot_id}",
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=bot_token,
-            plugins=dict(root="SpamX.module")
+            plugins=dict(root="BWFSPAM.module")
             )
         try:
-            await SpamXClient.start()
-            TheSpamX.clients.append(SpamXClient)
-            TheSpamX.database.addSession(SpamXClient.me.id, bot_token)
-            await message.reply(f"**✅ Wew, Client {SpamXClient.me.mention} Started**")
+            await BWFSPAMClient.start()
+            TheBWFSPAM.clients.append(BWFSPAMClient)
+            TheBWFSPAM.database.addSession(BWFSPAMClient.me.id, bot_token)
+            await message.reply(f"**✅ Wew, Client {BWFSPAMClient.me.mention} Started**")
         except Exception as er:
-            await message.reply(f"**❎ Error:** {str(er)} \n\n __Report in @{TheSpamX.supportGroup}__")
+            await message.reply(f"**❎ Error:** {str(er)} \n\n __Report in @{TheBWFSPAM.supportGroup}__")
         await checking.delete()
 
     else:
@@ -148,8 +148,8 @@ async def add_client(RiZoeL: Client, message: Message):
                 await checking.delete()
                 return
             except Exception as err:
-                TheSpamX.logs.info(str(err))
-                await message.reply(f"**❎ Error:** {str(err)} \n\n__Report in @{TheSpamX.supportGroup}__")
+                TheBWFSPAM.logs.info(str(err))
+                await message.reply(f"**❎ Error:** {str(err)} \n\n__Report in @{TheBWFSPAM.supportGroup}__")
                 await checking.delete()
                 return
             try:
@@ -208,45 +208,45 @@ async def add_client(RiZoeL: Client, message: Message):
             process = await message.reply("__processing....__")
             string_session = await TempClient.export_session_string()
             await TempClient.disconnect()
-            SpamXClient = Client(
-                f"SpamX-{phone_number}",
+            BWFSPAMClient = Client(
+                f"BWFSPAM-{phone_number}",
                 api_id=API_ID,
                 api_hash=API_HASH,
                 session_string=string_session,
-                plugins=dict(root="SpamX.module")
+                plugins=dict(root="BWFSPAM.module")
             )
-            await SpamXClient.start()
-            TheSpamX.database.addSession(phone_number, string_session, password)
-            TheSpamX.clients.append(SpamXClient)
+            await BWFSPAMClient.start()
+            TheBWFSPAM.database.addSession(phone_number, string_session, password)
+            TheBWFSPAM.clients.append(BWFSPAMClient)
             try:
-                await SpamXClient.join_chat(TheSpamX.updateChannel)
-                await SpamXClient.join_chat(TheSpamX.supportGroup)
+                await BWFSPAMClient.join_chat(TheBWFSPAM.updateChannel)
+                await BWFSPAMClient.join_chat(TheBWFSPAM.supportGroup)
                 try:
-                    await SpamXClient.send_message(RiZoeL.me.username, "/start")
+                    await BWFSPAMClient.send_message(RiZoeL.me.username, "/start")
                 except:
                     pass
             except Exception:
                 pass
 
-            if await TheSpamX.validateLogger(SpamXClient):
+            if await TheBWFSPAM.validateLogger(BWFSPAMClient):
                 log = await message.reply("__✅ Joined Logger__")
             else:
                 log = await message.reply("**🔹Note:** __Add Client in logger group!__")
             await asyncio.sleep(2)
-            await message.reply(f"**✅ SpamX Client started on {SpamXClient.me.mention}, 🔻Phone Number: {phone_number}**")
+            await message.reply(f"**✅ BWFSPAM Client started on {BWFSPAMClient.me.mention}, 🔻Phone Number: {phone_number}**")
             await process.delete()
             await log.delete()
         except Exception as erorr:
-            await message.reply(f"**❎ Error:** {str(erorr)} \n\n __Report in @{TheSpamX.supportGroup}__")
+            await message.reply(f"**❎ Error:** {str(erorr)} \n\n __Report in @{TheBWFSPAM.supportGroup}__")
 
 
 @Client.on_message(
-    filters.regex("Remove Client ➖") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("Remove Client ➖") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def remove_client(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
-    if len(TheSpamX.clients) == 0:
+    if len(TheBWFSPAM.clients) == 0:
         await message.reply_text("❎ No clients found in Database.")
         return
 
@@ -254,7 +254,7 @@ async def remove_client(_, message: Message):
 
     collection = []
     clientNo = 0
-    for client in TheSpamX.clients:
+    for client in TheBWFSPAM.clients:
         if client.me.is_bot:
             collection.append((f"Bot: {client.me.id}", f"client:delete:{client.me.id}:{clientNo}"))
         else:
@@ -271,12 +271,12 @@ async def remove_client(_, message: Message):
     await process.delete()
 
 @Client.on_message(
-    filters.regex("🔐 Get Access Of Client") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("🔐 Get Access Of Client") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def get_access(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
-    if len(TheSpamX.clients) == 0:
+    if len(TheBWFSPAM.clients) == 0:
         await message.reply_text("❎ No clients found in Database.")
         return
 
@@ -284,7 +284,7 @@ async def get_access(_, message: Message):
 
     collection = []
     clientNo = 0
-    for client in TheSpamX.clients:
+    for client in TheBWFSPAM.clients:
         if not client.me.is_bot:
             collection.append((f"+{client.me.phone_number}", f"client:access:{client.me.phone_number}:{clientNo}"))
         clientNo += 1
@@ -300,7 +300,7 @@ async def get_access(_, message: Message):
 
 @Client.on_callback_query(filters.regex("client:.*$"))
 async def clientCallbacks(_, callback: CallbackQuery):
-    if await TheSpamX.sudo.sudoFilter(callback.message, 1, callback.from_user.id):
+    if await TheBWFSPAM.sudo.sudoFilter(callback.message, 1, callback.from_user.id):
         await callback.message.delete()
         return
 
@@ -313,13 +313,13 @@ async def clientCallbacks(_, callback: CallbackQuery):
         collection = []
         clientNo = 0
         if callback.data.split(':')[2].lower() == "access":
-            for client in TheSpamX.clients:
+            for client in TheBWFSPAM.clients:
                 if not client.me.is_bot:
                     collection.append((f"+{client.me.phone_number}", f"client:access:{client.me.phone_number}:{clientNo}"))
                     clientNo += 1
 
         elif callback.data.split(':')[2].lower() == "delete":
-            for client in TheSpamX.clients:
+            for client in TheBWFSPAM.clients:
                 if client.me.is_bot:
                     collection.append((f"Bot: {client.me.id}", f"client:delete:{client.me.id}:{clientNo}"))
                 else:
@@ -349,7 +349,7 @@ async def clientCallbacks(_, callback: CallbackQuery):
     if func == "delete":
         try:
             await callback.message.edit(
-                f"**Please confirm that you want to remove {TheSpamX.clients[client_number].me.mention} ({phone_id}) from DB**",
+                f"**Please confirm that you want to remove {TheBWFSPAM.clients[client_number].me.mention} ({phone_id}) from DB**",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -364,7 +364,7 @@ async def clientCallbacks(_, callback: CallbackQuery):
             )
         except:
             await callback.message.reply(
-                f"**Please confirm that you want to remove {TheSpamX.clients[client_number].me.mention} ({phone_id}) from DB**",
+                f"**Please confirm that you want to remove {TheBWFSPAM.clients[client_number].me.mention} ({phone_id}) from DB**",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -382,10 +382,10 @@ async def clientCallbacks(_, callback: CallbackQuery):
     elif func == "remove":
         await callback.answer("removing...", show_alert=True)
         await callback.message.edit("__removing__")
-        client = TheSpamX.clients[client_number]
+        client = TheBWFSPAM.clients[client_number]
         await client.stop()
         client_mention = client.me.mention
-        TheSpamX.clients.remove(client)
+        TheBWFSPAM.clients.remove(client)
 
         try:
             await callback.message.edit(
@@ -444,7 +444,7 @@ async def clientCallbacks(_, callback: CallbackQuery):
 
     elif func == "otp":
         await callback.message.edit("__fetching.....__")
-        client = TheSpamX.clients[client_number]
+        client = TheBWFSPAM.clients[client_number]
         async for otp_message in client.get_chat_history(777000, 1):
             if otp_message.text.lower().startswith("login code:"):
                 otp_is = int(otp_message.text.split(" ")[2].split(".")[0])
@@ -480,7 +480,7 @@ async def clientCallbacks(_, callback: CallbackQuery):
                     )
                     await callback.message.delete()
         if otp_is:
-            session_data = TheSpamX.database.getSession(phone_id)
+            session_data = TheBWFSPAM.database.getSession(phone_id)
             if session_data['password']:
                 otp_text = f"**🔑 OTP for {phone_id} is:**\n\n**🔐 OTP -**  `{otp_is}`  __(tap to copy)__ \n**🔓 Password -** `{session_data['password']}`"
             else:

@@ -2,8 +2,8 @@ import time
 
 from platform import python_version
 
-from SpamX.functions.database import dataBase
-from SpamX.config import PING_MSG
+from BWFSPAM.functions.database import dataBase
+from BWFSPAM.config import PING_MSG
 
 from pyrogram import __version__
 
@@ -13,7 +13,7 @@ StartTime = time.time()
 
 # --- versions --- #
 version = {
-    "SpamX": "v2.0",
+    "BWFSPAM": "v2.0",
     "pyrogram": __version__,
     "python": python_version(),
 }
@@ -28,4 +28,4 @@ dataBase = dataBase
 if PING_MSG:
     pingMSG = str(PING_MSG)
 else:
-    pingMSG = "SpamX"
+    pingMSG = "BWFSPAM"

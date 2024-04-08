@@ -2,15 +2,15 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, ReplyKeyboardRemove
 
-from . import TheSpamX
+from . import TheBWFSPAM
 
 @Client.on_message(
-    filters.regex("↗️ Join All") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("↗️ Join All") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def join_all(client: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message):
+    if await TheBWFSPAM.sudo.sudoFilter(message):
         return
-    if len(TheSpamX.clients) == 0:
+    if len(TheBWFSPAM.clients) == 0:
         await message.reply("__❎ You have 0 clients__")
         return
     chat: Message = await client.ask(
@@ -34,7 +34,7 @@ async def join_all(client: Client, message: Message):
 
     joined = 0
     group = None
-    for client in TheSpamX.clients:
+    for client in TheBWFSPAM.clients:
         try:
             group = await client.join_chat(join_link)
             joined += 1
@@ -48,12 +48,12 @@ async def join_all(client: Client, message: Message):
     await wait.delete()
 
 @Client.on_message(
-    filters.regex("Leave All ↙️") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("Leave All ↙️") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def leave_all(client: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message):
+    if await TheBWFSPAM.sudo.sudoFilter(message):
         return
-    if len(TheSpamX.clients) == 0:
+    if len(TheBWFSPAM.clients) == 0:
         await message.reply("__❎ You have 0 clients__")
         return
     chat: Message = await client.ask(
@@ -77,7 +77,7 @@ async def leave_all(client: Client, message: Message):
             leave_chat = str(chat.text)
 
     leaved = 0
-    for client in TheSpamX.clients:
+    for client in TheBWFSPAM.clients:
         try:
             await client.leave_chat(leave_chat)
             leaved += 1

@@ -1,4 +1,4 @@
-from . import TheSpamX
+from . import TheBWFSPAM
 
 from pyrogram import Client, filters
 from pyrogram.types import (
@@ -7,21 +7,21 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
 )
 
-from SpamX.functions.messages import helpMessages
-from SpamX.functions.keyboard import help_buttons
+from BWFSPAM.functions.messages import helpMessages
+from BWFSPAM.functions.keyboard import help_buttons
 
 @Client.on_callback_query(filters.regex("help:.*$"))
 async def helpCallbacks(_, callback: CallbackQuery):
     query = str(callback.data.lower().split(":")[1])
 
     if query == "reboot":
-        await callback.answer("Rebooting SpamX.....", show_alert=True)
-        await callback.message.edit("__🔸 Rebooting SpamX.....__")
-        await TheSpamX.reboot()
+        await callback.answer("Rebooting BWFSPAM.....", show_alert=True)
+        await callback.message.edit("__🔸 Rebooting BWFSPAM.....__")
+        await TheBWFSPAM.reboot()
 
     elif query == "spam":
         await callback.message.edit(
-            helpMessages.spam.format(TheSpamX.handler, TheSpamX.supportGroup),
+            helpMessages.spam.format(TheBWFSPAM.handler, TheBWFSPAM.supportGroup),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -33,7 +33,7 @@ async def helpCallbacks(_, callback: CallbackQuery):
 
     elif query == "raid":
         await callback.message.edit(
-            helpMessages.raid.format(TheSpamX.handler, TheSpamX.supportGroup),
+            helpMessages.raid.format(TheBWFSPAM.handler, TheBWFSPAM.supportGroup),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -45,7 +45,7 @@ async def helpCallbacks(_, callback: CallbackQuery):
 
     elif query == "direct":
         await callback.message.edit(
-            helpMessages.direct_message.format(TheSpamX.handler, TheSpamX.supportGroup),
+            helpMessages.direct_message.format(TheBWFSPAM.handler, TheBWFSPAM.supportGroup),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -57,7 +57,7 @@ async def helpCallbacks(_, callback: CallbackQuery):
 
     elif query == "basic":
         await callback.message.edit(
-            helpMessages.basic.format(TheSpamX.handler, TheSpamX.supportGroup),
+            helpMessages.basic.format(TheBWFSPAM.handler, TheBWFSPAM.supportGroup),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -69,7 +69,7 @@ async def helpCallbacks(_, callback: CallbackQuery):
 
     elif query == "profile":
         await callback.message.edit(
-            helpMessages.profile.format(TheSpamX.handler, TheSpamX.supportGroup),
+            helpMessages.profile.format(TheBWFSPAM.handler, TheBWFSPAM.supportGroup),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -81,7 +81,7 @@ async def helpCallbacks(_, callback: CallbackQuery):
 
     elif query == "extra":
         await callback.message.edit(
-            helpMessages.extra.format(TheSpamX.handler, TheSpamX.supportGroup),
+            helpMessages.extra.format(TheBWFSPAM.handler, TheBWFSPAM.supportGroup),
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -93,6 +93,6 @@ async def helpCallbacks(_, callback: CallbackQuery):
 
     elif query == "back":
         await callback.message.edit(
-            helpMessages.start.format(TheSpamX.handler, TheSpamX.updateChannel, TheSpamX.supportGroup),
+            helpMessages.start.format(TheBWFSPAM.handler, TheBWFSPAM.updateChannel, TheBWFSPAM.supportGroup),
             reply_markup=help_buttons,
         )

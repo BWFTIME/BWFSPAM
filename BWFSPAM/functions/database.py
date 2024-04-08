@@ -1,14 +1,14 @@
 """
-    SpamX by RiZoeLX
+    BWFSPAM by RiZoeLX
     Database - Used MonGo DB
 """
 import os
 
-from SpamX.config import DATABASE_URL
+from BWFSPAM.config import DATABASE_URL
 
 from pymongo import MongoClient
 
-db_name = os.getenv("DB_NAME", "SpamX")
+db_name = os.getenv("DB_NAME", "BWFSPAM")
 
 class MongoDB:
     def __init__(self, DB_URL) -> None:

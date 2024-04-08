@@ -1,5 +1,5 @@
 import os
-from resources import setupSpamX, evn_vars, clear, ask
+from resources import setupBWFSPAM, evn_vars, clear, ask
 
 os.system("clear")
 
@@ -17,16 +17,16 @@ if start.lower() in ['y', 'yes']:
         y.write(evn_vars)
         y.close()
         os.system("clear")
-        setupSpamX()
+        setupBWFSPAM()
     else:
         os.system("clear")
-        setupSpamX()
+        setupBWFSPAM()
   elif not os.path.exists(".env"):
     y = open(".env", "w")
     y.write(evn_vars)
     y.close()
     os.system("clear")
-    setupSpamX()
+    setupBWFSPAM()
 else:
   clear()
-  os.system("python3 -m SpamX")
+  os.system("python3 -m BWFSPAM")

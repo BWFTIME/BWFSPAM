@@ -34,7 +34,7 @@ sudo apt install screen
 <b>3) clone repo and open dictionary </b>
 
 ```python
-git clone https://github.com/RiZoeLX/SpamX && cd SpamX
+git clone https://github.com/RiZoeLX/BWFSPAM && cd BWFSPAM
 ```
 
 <b>4) Install requirements </b>
@@ -46,10 +46,10 @@ sudo apt install python3-pip && pip3 install -r requirements.txt
 <b>5) Open Screen </b>
 
 ```python
-screen -S SpamX 
+screen -S BWFSPAM 
 ```
 
-<b>6) Run sh.py to fill values and start SpamX </b>
+<b>6) Run sh.py to fill values and start BWFSPAM </b>
 
 ```python
 python3 sh.py

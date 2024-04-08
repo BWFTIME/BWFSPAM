@@ -1,1 +1,1 @@
-from SpamX.functions.clients import TheSpamX
+from BWFSPAM.functions.clients import TheBWFSPAM

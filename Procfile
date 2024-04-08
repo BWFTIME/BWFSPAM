@@ -1,1 +1,1 @@
-worker: python3 -m SpamX
+worker: python3 -m BWFSPAM

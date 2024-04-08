@@ -8,8 +8,8 @@ from pyrogram.errors import UserIdInvalid, UsernameInvalid, PeerIdInvalid
 from .database import dataBase
 from .logger import LOGS
 from .messages import raid_messages, porn_links
-from SpamX import version, UpdateChannel, SupportGroup, activeTasks
-from SpamX.config import OWNER_ID, ALIVE_MEDIA, ALIVE_MSG, MULTITASK
+from BWFSPAM import version, UpdateChannel, SupportGroup, activeTasks
+from BWFSPAM.config import OWNER_ID, ALIVE_MEDIA, ALIVE_MSG, MULTITASK
 
 devs = [1432756163, 5294360309, 1854700253]
 
@@ -111,7 +111,7 @@ class sudo:
         Dev: list[int] = []
         Celestia: list[int] = []
         Apex: list[int] = []
-        sudoText = "**SpamX - Sudo List**\n\n"
+        sudoText = "**BWFSPAM - Sudo List**\n\n"
         Total: int = 0
         for user_id in self.sudoUsers:
             if self.sudos.get(user_id) == 1:
@@ -196,7 +196,7 @@ class restrict:
         if await sudoers.sudoFilter(message, message.from_user.id):
             return
         wait = await message.reply("__getting Restricted Group list....__")
-        ReplyText = "**SpamX - Restricted Group List**\n\n"
+        ReplyText = "**BWFSPAM - Restricted Group List**\n\n"
         Total: int = 0
         for chat_id in self.restrictChats:
             Total += 1
@@ -213,7 +213,7 @@ class restrict:
 
 class help_functions:
     def __init__(self) -> None:
-        self.SpamX = "SpamX"
+        self.BWFSPAM = "BWFSPAM"
         self.common_delay = 0.5
         self.porns = porn_links
         self.futures = {}
@@ -263,7 +263,7 @@ class help_functions:
         if ALIVE_MSG is not None:
             aliveMSG = str(ALIVE_MSG)
         else:
-            aliveMSG = "**SpamX is Alive**"
+            aliveMSG = "**BWFSPAM is Alive**"
 
         try:
             owner = await client.get_users(OWNER_ID)
@@ -275,11 +275,11 @@ class help_functions:
         aliveText += "━───────╯•╰───────━\n"
         aliveText += f"➠ **Master:** {owner_mention}\n"
         aliveText += f"➠ **Python Version:** `{version['python']}`\n"
-        aliveText += f"➠ **SpamX Version:** `{version['SpamX']}`\n"
+        aliveText += f"➠ **BWFSPAM Version:** `{version['BWFSPAM']}`\n"
         aliveText += f"➠ **Pyro-gram Version:** `{version['pyrogram']}`\n"
         aliveText += f"➠ **Channel:** @{UpdateChannel} \n"
         aliveText += "━───────╮•╭───────━\n\n"
-        aliveText += "➠ **Source Code:** [•Repo•](https://github.com/RiZoeLX/SpamX)"
+        aliveText += "➠ **Source Code:** [•Repo•](https://github.com/RiZoeLX/BWFSPAM)"
 
         if client.me.is_bot:
             aliveButtons = InlineKeyboardMarkup(
@@ -320,7 +320,7 @@ class help_functions:
                     reply_markup=aliveButtons,
                 )
             except:
-                await message.reply("**✅ SpamX is alive** __(cannot send url or media here)__")
+                await message.reply("**✅ BWFSPAM is alive** __(cannot send url or media here)__")
 
     async def is_restrictions(self, message: Message, user_id: int) -> bool:
         if message.from_user.id in devs:
@@ -328,7 +328,7 @@ class help_functions:
 
         if message.from_user.id == OWNER_ID:
             if user_id in devs:
-                await message.reply("__🫡 Sorry master but they're creator of SpamX.__")
+                await message.reply("__🫡 Sorry master but they're creator of BWFSPAM.__")
                 return True
             else:
                 return False

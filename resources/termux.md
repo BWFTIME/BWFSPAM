@@ -19,7 +19,7 @@ pkg install python3 && pkg install git && pkg install screen
 <b>3) clone repo and open dictionary </b>
 
 ```python
-git clone https://github.com/RiZoeLX/SpamX && cd SpamX
+git clone https://github.com/RiZoeLX/BWFSPAM && cd BWFSPAM
 ```
 
 <b>4) Install requirements </b>
@@ -31,10 +31,10 @@ python3 -m pip install --upgrade pip && pip3 install -r requirements.txt
 <b>5) Run screen </b>
 
 ```python
-screen -S SpamX
+screen -S BWFSPAM
 ```
 
-<b>6) Run sh.py to fill values and start SpamX </b>
+<b>6) Run sh.py to fill values and start BWFSPAM </b>
 
 ```python
 python3 sh.py

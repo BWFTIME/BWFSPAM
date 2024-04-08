@@ -1,4 +1,4 @@
-""" RiZoeLX 2022-2023 © SpamX """
+""" RiZoeLX 2022-2023 © BWFSPAM """
 
 import os, time, sys
 from sys import stdout
@@ -30,7 +30,7 @@ error  =    f"{blue}[{white}!{blue}] {red}"
 info  =   f"{yellow}[{white}+{yellow}] {cyan}"
 info2  =   f"{green}[{white}•{green}] {purple}"
 
-spamx_logo = f'''
+BWFSPAM_logo = f'''
 {bred}┏━━━┓━━━━━━━━━━━━━━━┏┓━┏┓━
 {bblue}┃┏━┓┃━━━━━━━━━━━━━━━┃┃━┃┃━
 {yellow}┃┗━┗┛┏━━┓┏━━┓━┏━━━━┓┗━━━┛━
@@ -51,9 +51,9 @@ def sprint(text, second):
 def clear(fast=False):
     os.system("clear")
     if fast:
-        print(spamx_logo)
+        print(BWFSPAM_logo)
     else:
-        sprint(spamx_logo, 0.01)
+        sprint(BWFSPAM_logo, 0.01)
 
 evn_vars = """
 API_ID=
@@ -69,10 +69,10 @@ ALIVE_MEDIA=
 MULTITASK=
 """
 
-def setupSpamX():
+def setupBWFSPAM():
     os.system("pip3 install python-dotenv[cli]")
     clear()
-    print(f'    {white}SpamX Version: v2.O \n    {white}By RiZoeLX')
+    print(f'    {white}BWFSPAM Version: v2.O \n    {white}By RiZoeLX')
     
     time.sleep(2)
     api_id = input(f"{ask}Enter API_ID: ")
@@ -82,7 +82,7 @@ def setupSpamX():
     else:
         print(f"{error}You have to fill this variable! all process restarting..")
         time.sleep(2)
-        setupSpamX()
+        setupBWFSPAM()
     api_hash = input(f"\n{ask}Enter API_HASH: ")
     if api_hash:
         print(f"{bcyan}Got it! Fill next value")
@@ -90,7 +90,7 @@ def setupSpamX():
     else:
         print(f"{error}You have to fill this variable! all process restarting..")
         time.sleep(2)
-        setupSpamX()
+        setupBWFSPAM()
     LOGGER_ID = input(f"\n{ask}Enter Chat ID or Username of LOGGER_ID or press enter: ")
     if LOGGER_ID:
         print(f"{bcyan}Got it! Fill next value")
@@ -102,7 +102,7 @@ def setupSpamX():
     else:
         print(f"{error}You have to fill this variable! all process restarting..")
         time.sleep(2)
-        setupSpamX()
+        setupBWFSPAM()
     ASSISTANT_TOKEN = input(f"\n{ask}Enter bot token of ASSISTANT_TOKEN: ")
     if ASSISTANT_TOKEN:
         print(f"{bcyan}Got it! Fill next value")
@@ -110,7 +110,7 @@ def setupSpamX():
     else:
         print(f"{error}You have to fill this variable! all process restarting..")
         time.sleep(2)
-        setupSpamX()
+        setupBWFSPAM()
 
     database_url = (input(f"\n{ask}Enter Mongo/Postgres database url: "))
     if database_url:
@@ -120,11 +120,11 @@ def setupSpamX():
         else:
             print(f"{error}Need Mongo or Postgres database url! restarting...")
             time.sleep(2)
-            setupSpamX()
+            setupBWFSPAM()
     else:
         print(f"{error}You have to fill this variable! all process restarting..")
         time.sleep(2)
-        setupSpamX()
+        setupBWFSPAM()
 
     print(f"{bpurple}\n\nNow, next all variables are optional press enter if yiu don't wanna fill!\n")
 
@@ -152,7 +152,7 @@ def recheck():
     if confim.lower() == "n":
         os.system("clear")
         print(f"{info}Okay! Fill Your Vars Again")
-        setupSpamX()
+        setupBWFSPAM()
     elif confim.lower() == "y":
         get_start()
     else:
@@ -161,12 +161,12 @@ def recheck():
 
 def get_start():
     clear(fast=True)
-    confim = str(input(f"{ask}Wanna start SpamX Now?: y/n: "))
+    confim = str(input(f"{ask}Wanna start BWFSPAM Now?: y/n: "))
     if confim.lower() == "y":
         os.system("pip3 install python-dotenv")
-        os.system("python3 -m SpamX")
+        os.system("python3 -m BWFSPAM")
     elif confim.lower() == "n":
-        print(f"\n{info}Nevermind !! You Can Start It Later With by using; python3-m SpamX\n")
+        print(f"\n{info}Nevermind !! You Can Start It Later With by using; python3-m BWFSPAM\n")
         exit(2)
     else:
         os.system("clear")

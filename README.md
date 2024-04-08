@@ -7,14 +7,14 @@
 
 ----
 
-<b> SpamX Is A Pyrogram Based Spam Bots For Telegram With Many Features </b>
+<b> BWFSPAM Is A Pyrogram Based Spam Bots For Telegram With Many Features </b>
 
-![github card](https://github-readme-stats.vercel.app/api/pin/?username=RiZoeLX&repo=SpamX&theme=lite)
+![github card](https://github-readme-stats.vercel.app/api/pin/?username=RiZoeLX&repo=BWFSPAM&theme=lite)
 
-![Repo Size](https://img.shields.io/github/repo-size/RiZoeLX/SpamX?&style=social&logo=github)
+![Repo Size](https://img.shields.io/github/repo-size/RiZoeLX/BWFSPAM?&style=social&logo=github)
 ![Branch](https://img.shields.io/badge/Branch-main-white?&style=social&logo=github)
 ![Python](https://img.shields.io/badge/Python-v3.10-white?style=social&logo=python)
-![GitHub language count](https://img.shields.io/github/languages/count/RiZoeLX/SpamX?&style=social&logo=hyper)
+![GitHub language count](https://img.shields.io/github/languages/count/RiZoeLX/BWFSPAM?&style=social&logo=hyper)
 
 [![Telegram Group](https://img.shields.io/badge/Telegram-Group-white?&style=social&logo=telegram)](https://t.me/RiZoeLXSupport)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-white?&style=social&logo=telegram)](https://t.me/RiZoeL_X)
@@ -37,20 +37,20 @@
 
 <h3 align="center">Deployment</h3>
 
-  - Heroku: [Click Here](https://github.com/RiZoeLX/SpamX/blob/main/resources/heroku.md)
+  - Heroku: [Click Here](https://github.com/RiZoeLX/BWFSPAM/blob/main/resources/heroku.md)
   - Mogenius: [Click Here](https://youtu.be/6XIjTbumJYY)
   - Google Colab: [Click Here](https://youtu.be/sYgy4_8i7c8)
-  - VPS/Local hosting: [Click here](https://github.com/RiZoeLX/SpamX/blob/main/resources/local.md)
-  - Termux: [Click Here](https://github.com/RiZoeLX/SpamX/blob/main/resources/termux.md) `Some errors!`
+  - VPS/Local hosting: [Click here](https://github.com/RiZoeLX/BWFSPAM/blob/main/resources/local.md)
+  - Termux: [Click Here](https://github.com/RiZoeLX/BWFSPAM/blob/main/resources/termux.md) `Some errors!`
 
 ----
 
 <h4> License </h4>
 
 [![License](https://www.gnu.org/graphics/gplv3-or-later.png)](LICENSE)   
-SpamX is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/gplv3-or-later.pngl) v3 or later.
+BWFSPAM is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/gplv3-or-later.pngl) v3 or later.
 
 <h3>Credits</h3>
 
-  - <b> [RiZoeL](https://github.com/MrRizoel) : Dev/creator of SpamX </b> 
-  - <b> [Pyrogram](https://github.com/pyrogram/pyrogram) : Python Library used in SpamX
+  - <b> [RiZoeL](https://github.com/MrRizoel) : Dev/creator of BWFSPAM </b> 
+  - <b> [Pyrogram](https://github.com/pyrogram/pyrogram) : Python Library used in BWFSPAM

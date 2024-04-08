@@ -13,20 +13,20 @@ from pyrogram.types import (
 )
 from pyrogram.errors import UserIdInvalid, UsernameInvalid, PeerIdInvalid
 
-from . import TheSpamX
-from SpamX.functions.keyboard import gen_inline_keyboard
+from . import TheBWFSPAM
+from BWFSPAM.functions.keyboard import gen_inline_keyboard
 
 @Client.on_message(
-    filters.regex("🔸 Get All Sudos 🔸") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("🔸 Get All Sudos 🔸") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def get_all_sudos(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 2):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 2):
         return
     wait = await message.reply("__processing__")
     collection = []
-    for sudo_user_id in TheSpamX.sudo.sudoUsers:
+    for sudo_user_id in TheBWFSPAM.sudo.sudoUsers:
         try:
-            sudo_ = await TheSpamX.SpamX.get_users(int(sudo_user_id))
+            sudo_ = await TheBWFSPAM.BWFSPAM.get_users(int(sudo_user_id))
             sudo_name = sudo_.first_name
         except:
             sudo_name = f"ID: {sudo_user_id}"
@@ -46,10 +46,10 @@ async def get_all_sudos(_, message: Message):
         await wait.delete()
 
 @Client.on_message(
-    filters.regex("➕ Add Sudo") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("➕ Add Sudo") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def add_sudo_user(RiZoeL: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
     sudo_message: Message = await RiZoeL.ask(
         message.from_user.id,
@@ -71,12 +71,12 @@ async def add_sudo_user(RiZoeL: Client, message: Message):
             await sudo_message.reply("User ID invalid or not meet yet! please tell them to start me!")
             return
         except Exception as Error:
-            await sudo_message.reply(f"**Unknown Error:** {str(Error)} \n\n__Report in @{TheSpamX.supportGroup}__")
+            await sudo_message.reply(f"**Unknown Error:** {str(Error)} \n\n__Report in @{TheBWFSPAM.supportGroup}__")
             return
 
         ask_rank: Message = await RiZoeL.ask(
             message.from_user.id,
-            f"**❓ Please select sudo-rank for {sudo_user.mention}**\n\n **Sudo - Rank details**\n\n __1: Dev - Hold all rights. \n 2: Celestia - These users can access and verify data, as well as utilize SpamX Spam Bots. \n 3: Apex - These users can only utilize SpamX Spam Bots.__",
+            f"**❓ Please select sudo-rank for {sudo_user.mention}**\n\n **Sudo - Rank details**\n\n __1: Dev - Hold all rights. \n 2: Celestia - These users can access and verify data, as well as utilize BWFSPAM Spam Bots. \n 3: Apex - These users can only utilize BWFSPAM Spam Bots.__",
             filters=filters.text,
             timeout=120,
             reply_markup=ReplyKeyboardMarkup(
@@ -93,17 +93,17 @@ async def add_sudo_user(RiZoeL: Client, message: Message):
         )
         if ask_rank.text in ["1: Dev", "2: Celestia", "3: Apex"]:
             rank = int(ask_rank.text.split(":")[0])
-            await TheSpamX.sudo.add(message, sudo_user.id, rank)
+            await TheBWFSPAM.sudo.add(message, sudo_user.id, rank)
         else:
             await ask_rank.reply("**❎ Invalid rank**")
     else:
         await sudo_message.reply("**❕Please provide user ID or Username**")
 
 @Client.on_message(
-    filters.regex("Remove Sudo ➖") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("Remove Sudo ➖") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def remove_sudo_user(RiZoeL: Client, message: Message):
-    if TheSpamX.sudo.sudoFilter(message, 1):
+    if TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
     sudo_message: Message = await RiZoeL.ask(
         message.from_user.id,
@@ -125,18 +125,18 @@ async def remove_sudo_user(RiZoeL: Client, message: Message):
             await sudo_message.reply("User ID invalid or not meet yet! please tell them to start me!")
             return
         except Exception as Error:
-            await sudo_message.reply(f"**Unknown Error:** {str(Error)} \n\n__Report in @{TheSpamX.supportGroup}__")
+            await sudo_message.reply(f"**Unknown Error:** {str(Error)} \n\n__Report in @{TheBWFSPAM.supportGroup}__")
             return
 
-        await TheSpamX.sudo.remove(message, sudo_user.id)
+        await TheBWFSPAM.sudo.remove(message, sudo_user.id)
     else:
         await sudo_message.reply("**❕Please provide user ID or Username**")
 
 @Client.on_message(
-    filters.regex("Remove All ☑️") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("Remove All ☑️") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def remove_all_sudo_user(RiZoeL: Client, message: Message):
-    if message.from_user.id != TheSpamX.owner_id:
+    if message.from_user.id != TheBWFSPAM.owner_id:
         await message.reply("__Only owner can do that!__")
         return
     confirm_message: Message = await RiZoeL.ask(
@@ -159,8 +159,8 @@ async def remove_all_sudo_user(RiZoeL: Client, message: Message):
         if confirm_message.text.lower() == "yes":
             wait_message = await confirm_message.reply("__processing__", reply_markup=ReplyKeyboardRemove())
             removed = 0
-            for sudo_user_id in TheSpamX.sudo.sudoUsers:
-                await TheSpamX.sudo.remove(confirm_message, int(sudo_user_id))
+            for sudo_user_id in TheBWFSPAM.sudo.sudoUsers:
+                await TheBWFSPAM.sudo.remove(confirm_message, int(sudo_user_id))
                 removed += 1
             try:
                 await wait_message.edit(f"**Removed all {removed} sudo users from DB**")
@@ -177,9 +177,9 @@ async def sudoCallbacks(RiZoeL: Client, callback: CallbackQuery):
     if query[1] == "back":
         await callback.answer("processing....")
         collection = []
-        for sudo_user_id in TheSpamX.sudo.sudoUsers:
+        for sudo_user_id in TheBWFSPAM.sudo.sudoUsers:
             try:
-                sudo_ = await TheSpamX.SpamX.get_users(int(sudo_user_id))
+                sudo_ = await TheBWFSPAM.BWFSPAM.get_users(int(sudo_user_id))
                 sudo_name = sudo_.first_name
             except:
                 sudo_name = f"ID: {sudo_user_id}"
@@ -199,7 +199,7 @@ async def sudoCallbacks(RiZoeL: Client, callback: CallbackQuery):
             await callback.message.delete()
 
     elif query[1] == "details":
-        if int(query[2]) == TheSpamX.owner_id:
+        if int(query[2]) == TheBWFSPAM.owner_id:
             await callback.answer("He is the owner of these Bots!", show_alert=True)
             return
         await callback.answer("processing....")
@@ -212,10 +212,10 @@ async def sudoCallbacks(RiZoeL: Client, callback: CallbackQuery):
                 sudo_details += f" **- UserName:** @{user.username} \n"
         except Exception:
             sudo_details += f" **- UserID:** `{query[2]}` \n"
-        rank = TheSpamX.sudo.sudos.get(int(query[2]))
-        sudo_details += f" **- SudoRank: {rank} ({TheSpamX.sudo.rankNames[rank]}) \n"
+        rank = TheBWFSPAM.sudo.sudos.get(int(query[2]))
+        sudo_details += f" **- SudoRank: {rank} ({TheBWFSPAM.sudo.rankNames[rank]}) \n"
 
-        promoted_by = TheSpamX.database.getSudo(int(query[2]))
+        promoted_by = TheBWFSPAM.database.getSudo(int(query[2]))
         if promoted_by["promoted_by"]:
             sudo_details += "\n"
             try:
@@ -241,19 +241,19 @@ async def sudoCallbacks(RiZoeL: Client, callback: CallbackQuery):
             await callback.message.delete()
 
 @Client.on_message(
-    filters.regex("Active Tasks ℹ️") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.regex("Active Tasks ℹ️") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def active_tasks(RiZoeL: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 2):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 2):
         return
     wait = await message.reply("▪ wait while get all active task.....")
-    if len(TheSpamX.activeTasks) == 0:
+    if len(TheBWFSPAM.activeTasks) == 0:
         active_message = None
     else:
         active_message = "🔹 All Active Task 🔹\n\n"
         active = 0
-        for task_id in TheSpamX.activeTasks:
-            active_task = TheSpamX.activeTasks.get(task_id)
+        for task_id in TheBWFSPAM.activeTasks:
+            active_task = TheBWFSPAM.activeTasks.get(task_id)
             active += 1
             if active_task['task'] in ['porn', 'loop', 'spam', 'delay', 'multiraid']:
                 active_message += f"  {active}) Active ID: {active_task['chat_id']} \n\n"
@@ -285,18 +285,18 @@ async def active_tasks(RiZoeL: Client, message: Message):
                 active_message += f"      - Message Link: {active_task['message_link']}\n\n"
         active_message += f"Total {active} Active Tasks, type '/stop (active ID)' to stop any active task!"
 
-    if len(TheSpamX.functions.futures) == 0:
+    if len(TheBWFSPAM.functions.futures) == 0:
         future_message = None
     else:
         if active_message:
             active_message += "\n\n\n"
         future_message = "All Future Tasks \n\n"
         future_active = 0
-        for task_id in TheSpamX.functions.futures:
-            future_task = TheSpamX.functions.futures.get(task_id)
+        for task_id in TheBWFSPAM.functions.futures:
+            future_task = TheBWFSPAM.functions.futures.get(task_id)
             future_active += 1
             try:
-                future_time = await TheSpamX.functions.get_time(int(future_task['future']))
+                future_time = await TheBWFSPAM.functions.get_time(int(future_task['future']))
             except:
                 future_time = f"{future_task['future']}secs"
             future_message += f"  {future_active}) Active ID: {future_task['chat_id']} \n\n"
@@ -326,10 +326,10 @@ async def active_tasks(RiZoeL: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "📢 Updates", url=f"https://t.me/{TheSpamX.updateChannel}"
+                        "📢 Updates", url=f"https://t.me/{TheBWFSPAM.updateChannel}"
                     ),
                     InlineKeyboardButton(
-                        "Support 👥", url=f"https://t.me/{TheSpamX.supportGroup}"
+                        "Support 👥", url=f"https://t.me/{TheBWFSPAM.supportGroup}"
                     )
                 ]
             ]
@@ -339,10 +339,10 @@ async def active_tasks(RiZoeL: Client, message: Message):
     await wait.delete()
 
 @Client.on_message(
-    filters.command("stop") & filters.private #& filters.user(TheSpamX.sudo.sudoUsers)
+    filters.command("stop") & filters.private #& filters.user(TheBWFSPAM.sudo.sudoUsers)
 )
 async def stop_task(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
 
     if len(message.command) <= 1:
@@ -366,16 +366,16 @@ async def stop_task(_, message: Message):
             )
             return
         if future:
-            if active_id in TheSpamX.functions.futures:
-                TheSpamX.functions.futures.pop(active_id)
+            if active_id in TheBWFSPAM.functions.futures:
+                TheBWFSPAM.functions.futures.pop(active_id)
                 await message.reply(f"__✅ Stopped future task: Task: {active_id}__")
             else:
                 await message.reply(f"__❕ No any future task in {active_id}__")
         else:
-            if active_id in TheSpamX.activeTasks:
-                if active_id in TheSpamX.functions.unlimited:
-                    TheSpamX.functions.unlimited.remove(active_id)
-                TheSpamX.activeTasks.pop(active_id)
+            if active_id in TheBWFSPAM.activeTasks:
+                if active_id in TheBWFSPAM.functions.unlimited:
+                    TheBWFSPAM.functions.unlimited.remove(active_id)
+                TheBWFSPAM.activeTasks.pop(active_id)
                 await message.reply(f"__✅ Stopped active task: Task: {active_id}__")
             else:
                 await message.reply(f"__❕ No any active task in {active_id}__")
@@ -384,16 +384,16 @@ async def stop_task(_, message: Message):
     filters.regex("🔸 Get All Restricted Chats 🔸") & filters.private
 )
 async def all_restricted_chat(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message):
+    if await TheBWFSPAM.sudo.sudoFilter(message):
         return
 
-    await TheSpamX.restrict.getRestrictedGroupList(message)
+    await TheBWFSPAM.restrict.getRestrictedGroupList(message)
 
 @Client.on_message(
     filters.regex("➕ Add Chat") & filters.private
 )
 async def add_chat(RiZoeL: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
 
     chat_details: Message = await RiZoeL.ask(
@@ -402,7 +402,7 @@ async def add_chat(RiZoeL: Client, message: Message):
         reply_markup=ReplyKeyboardRemove()
     )
     if chat_details.text.startswith("-100") and chat_details.text.split("-")[1].isnumeric():
-        await TheSpamX.restrict.add(message, chat_details.text)
+        await TheBWFSPAM.restrict.add(message, chat_details.text)
     else:
         await chat_details.reply("**❌ Invalid Chat ID!**")
 
@@ -410,7 +410,7 @@ async def add_chat(RiZoeL: Client, message: Message):
     filters.regex("Remove Chat ➖") & filters.private
 )
 async def remove_chat(RiZoeL: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 1):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 1):
         return
 
     chat_details: Message = await RiZoeL.ask(
@@ -419,9 +419,9 @@ async def remove_chat(RiZoeL: Client, message: Message):
         reply_markup=ReplyKeyboardRemove()
     )
     if chat_details.text.startswith("-100") and chat_details.text.split("-")[1].isnumeric():
-        if str(chat_details.text) == TheSpamX.restrict.res:
-            await chat_details.reply("__Sorry, You cannot remove that chat from Restricted List. It's support group of SpamX__")
+        if str(chat_details.text) == TheBWFSPAM.restrict.res:
+            await chat_details.reply("__Sorry, You cannot remove that chat from Restricted List. It's support group of BWFSPAM__")
             return
-        await TheSpamX.restrict.remove(message, chat_details.text)
+        await TheBWFSPAM.restrict.remove(message, chat_details.text)
     else:
         await chat_details.reply("**❌ Invalid Chat ID!**")

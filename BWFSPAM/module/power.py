@@ -1,6 +1,6 @@
 import random
 
-from . import TheSpamX
+from . import TheBWFSPAM
 
 from pyrogram import Client, filters
 from pyrogram.types import Message, CallbackQuery
@@ -25,11 +25,11 @@ from pyrogram.types import Message, CallbackQuery
             "cspam",
             "commonspam",
         ],
-        prefixes=TheSpamX.handler,
+        prefixes=TheBWFSPAM.handler,
     )
 )
 async def spam_messages(client: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     x = message.text[1:]
     if " " in x:
@@ -37,27 +37,27 @@ async def spam_messages(client: Client, message: Message):
     else:
         command = str(x)
     if command.lower() in ["spam", "bigspam"]:
-        await TheSpamX.functions.start_spam(client, message, spam="spam")
+        await TheBWFSPAM.functions.start_spam(client, message, spam="spam")
 
     elif command.lower() in ["delayspam", "dspam"]:
-        await TheSpamX.functions.start_spam(client, message, spam="delay")
+        await TheBWFSPAM.functions.start_spam(client, message, spam="delay")
 
     elif command.lower() in ["futurespam", "fspam", "timespam", "tspam"]:
-        await TheSpamX.functions.start_spam(client, message, spam="future")
+        await TheBWFSPAM.functions.start_spam(client, message, spam="future")
 
     elif command.lower() in ["pornspam", "pspam"]:
-        await TheSpamX.functions.start_spam(client, message, spam="porn")
+        await TheBWFSPAM.functions.start_spam(client, message, spam="porn")
 
     elif command.lower() in ["unlimitedspam", "uspam"]:
-        if await TheSpamX.sudo.sudoFilter(message):
+        if await TheBWFSPAM.sudo.sudoFilter(message):
             return
-        await TheSpamX.functions.start_spam(client, message, spam="loop")
+        await TheBWFSPAM.functions.start_spam(client, message, spam="loop")
 
     elif command.lower() in ["inlinespam", "ispam"]:
-        await TheSpamX.functions.inline_spam(client, message)
+        await TheBWFSPAM.functions.inline_spam(client, message)
 
     elif command.lower() in ["commonspam", "cspam"]:
-        await TheSpamX.functions.start_common_spam(client, message)
+        await TheBWFSPAM.functions.start_common_spam(client, message)
 
 @Client.on_message(
     filters.command(
@@ -67,11 +67,11 @@ async def spam_messages(client: Client, message: Message):
             "message",
             "dmraid",
         ],
-        prefixes=TheSpamX.handler
+        prefixes=TheBWFSPAM.handler
     )
 )
 async def direct_messages(client: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     x = message.text[1:]
     if " " in x:
@@ -79,13 +79,13 @@ async def direct_messages(client: Client, message: Message):
     else:
         command = str(x)
     if command.lower() == "dmspam":
-        await TheSpamX.functions.direct_messages(client, message, "spam")
+        await TheBWFSPAM.functions.direct_messages(client, message, "spam")
 
     elif command.lower() == "dmraid":
-        await TheSpamX.functions.direct_messages(client, message, "raid")
+        await TheBWFSPAM.functions.direct_messages(client, message, "raid")
 
     elif command.lower() in ["dm", "message"]:
-        await TheSpamX.functions.direct_messages(client, message, "message")
+        await TheBWFSPAM.functions.direct_messages(client, message, "message")
 
 @Client.on_message(
     filters.command(
@@ -100,11 +100,11 @@ async def direct_messages(client: Client, message: Message):
             "dreplyraid",
             "drraid",
         ],
-        prefixes=TheSpamX.handler
+        prefixes=TheBWFSPAM.handler
     )
 )
 async def raids(client: Client, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message, 3):
+    if await TheBWFSPAM.sudo.sudoFilter(message, 3):
         return
     x = message.text[1:]
     if " " in x:
@@ -112,43 +112,43 @@ async def raids(client: Client, message: Message):
     else:
         command = str(x)
     if command.lower() == "raid":
-        await TheSpamX.functions.raid(client, message)
+        await TheBWFSPAM.functions.raid(client, message)
 
     elif command.lower() in ["multiraid", "mraid"]:
-        await TheSpamX.functions.raid(client, message, multi=True)
+        await TheBWFSPAM.functions.raid(client, message, multi=True)
 
     elif command.lower() in ["replyraid", "rraid"]:
-        await TheSpamX.functions.replyraid(client, message)
+        await TheBWFSPAM.functions.replyraid(client, message)
 
     elif command.lower() in ["areplyraid", "arraid"]:
-        await TheSpamX.functions.replyraid(client, message, "enable")
+        await TheBWFSPAM.functions.replyraid(client, message, "enable")
 
     elif command.lower() in ["dreplyraid", "drraid"]:
-        await TheSpamX.functions.replyraid(client, message, "disable")
+        await TheBWFSPAM.functions.replyraid(client, message, "disable")
 
 @Client.on_message(
     filters.all
 )
 async def replayraid_watcher(_, message: Message):
-    if message.from_user.id in TheSpamX.functions.raid_users:
-        await message.reply(random.choice(TheSpamX.functions.raid_args))
+    if message.from_user.id in TheBWFSPAM.functions.raid_users:
+        await message.reply(random.choice(TheBWFSPAM.functions.raid_args))
 
 @Client.on_message(
     filters.command("stop")
 )
 async def stop_uspam(_, message: Message):
-    if await TheSpamX.sudo.sudoFilter(message):
+    if await TheBWFSPAM.sudo.sudoFilter(message):
         return
-    if message.chat.id in TheSpamX.functions.unlimited:
-        TheSpamX.functions.unlimited.remove(message.chat.id)
+    if message.chat.id in TheBWFSPAM.functions.unlimited:
+        TheBWFSPAM.functions.unlimited.remove(message.chat.id)
         await message.reply(f"__✅ Stopped Unlimited spam in {message.chat.title}!__")
-        TheSpamX.activeTasks.pop(message.chat.id)
+        TheBWFSPAM.activeTasks.pop(message.chat.id)
     else:
         await message.reply(f"__❎ No any active task in {message.chat.title}.__")
 
 @Client.on_callback_query(filters.regex("inline"))
 async def inlineSpamCB(_, callback: CallbackQuery):
     await callback.answer(
-        str(random.choice(TheSpamX.functions.raid_args)),
+        str(random.choice(TheBWFSPAM.functions.raid_args)),
         show_alert=True,
     )
