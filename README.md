@@ -37,7 +37,7 @@
 
 <h3 align="center">Deployment</h3>
 
-  - Heroku: [Click Here](https://github.com/BWFTIME/BWFSPAM)
+  - Heroku: [Click Here](https://github.com/BWFTIME/BWFSPAM.git)
   - Mogenius: [Click Here](https://youtu.be/6XIjTbumJYY)
   - Google Colab: [Click Here](https://youtu.be/sYgy4_8i7c8)
   - VPS/Local hosting: [Click here](https://github.com/RiZoeLX/BWFSPAM/blob/main/resources/local.md)
