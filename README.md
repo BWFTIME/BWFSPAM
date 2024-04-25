@@ -9,7 +9,7 @@
 
 <b> BWFSPAM Is A Pyrogram Based Spam Bots For Telegram With Many Features </b>
 
-![github card](https://github-readme-stats.vercel.app/api/pin/?username=RiZoeLX&repo=BWFSPAM&theme=lite)
+![github card](https://github.com/BWFTIME/BWFSPAM.git)
 
 ![Repo Size](https://img.shields.io/github/repo-size/RiZoeLX/BWFSPAM?&style=social&logo=github)
 ![Branch](https://img.shields.io/badge/Branch-main-white?&style=social&logo=github)
@@ -37,7 +37,7 @@
 
 <h3 align="center">Deployment</h3>
 
-  - Heroku: [Click Here](https://github.com/BWFTIME/BWFSPAM.git)
+  - Heroku: [Click Here](https://github.com/BWFTIME/BWFSPAM)
   - Mogenius: [Click Here](https://youtu.be/6XIjTbumJYY)
   - Google Colab: [Click Here](https://youtu.be/sYgy4_8i7c8)
   - VPS/Local hosting: [Click here](https://github.com/RiZoeLX/BWFSPAM/blob/main/resources/local.md)
