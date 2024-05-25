@@ -1,56 +1,25 @@
-<p align="center">
-  <img src="resources/RiZoeLX.png" alt="RiZoeLXSpam Logo">
-</p>
-<h6 align="center">
-  <b>• SᴘᴀᴍX Bʏ RɪZᴏᴇLX •</b>
-</h6>
+### 🥀 𝐁𝐞𝐬𝐭 𝐀𝐝𝐯𝐚𝐧𝐜𝐞𝐝 𝐒𝐮𝐩𝐬𝐫𝐟𝐚𝐬𝐭 𝐚𝐧𝐝 𝐒𝐦𝐚𝐫𝐭 𝐁𝐨𝐭 𝐒𝐨𝐮𝐫𝐜𝐞 𝐅𝐨𝐫 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐆𝐫𝐨𝐮𝐩𝐬 𝐚𝐧𝐝 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 ✨...
 
-----
+<p align="center"><a href="https://t.me/BWF_MUSIC1">https://telegra.ph/file/1b1b2a746656aebf77d6d.jpg<img src=""></a></p>
 
-<b> BWFSPAM Is A Pyrogram Based Spam Bots For Telegram With Many Features </b>
+##  Deploy to Heroku  🤝
 
-![github card](https://github.com/BWFTIME/BWFSPAM.git)
+- First give start then
+- Fork the repo then 
+- Tap below botton ☟︎︎︎☟︎︎︎☟︎︎︎ for deploy Romeo-musicBot 
 
-![Repo Size](https://img.shields.io/github/repo-size/RiZoeLX/BWFSPAM?&style=social&logo=github)
-![Branch](https://img.shields.io/badge/Branch-main-white?&style=social&logo=github)
-![Python](https://img.shields.io/badge/Python-v3.10-white?style=social&logo=python)
-![GitHub language count](https://img.shields.io/github/languages/count/RiZoeLX/BWFSPAM?&style=social&logo=hyper)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](http://dashboard.heroku.com/new?template=https://github.com/BWFTIME/BWFSPAM)
 
-[![Telegram Group](https://img.shields.io/badge/Telegram-Group-white?&style=social&logo=telegram)](https://t.me/RiZoeLXSupport)
-[![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-white?&style=social&logo=telegram)](https://t.me/RiZoeL_X)
 
- - Requirements
-   - [![PyPI - pyrogram](https://img.shields.io/badge/pypi-pyrogram-informational)](https://pypi.org/project/pyrogram)
 
-<b> Give a star ⭐</b>
+### 🥀 𝐃𝐞𝐩𝐥𝐨𝐲 𝐎𝐧 𝐆𝐢𝐭𝐇𝐮𝐛 𝐒𝐞𝐫𝐯𝐞𝐫 (𝐇𝐚𝐜𝐤𝐞𝐫-𝐑𝐉) 💞...
 
-----
-<h4>Youtube Tutorials 📺</h4>
 
-- [![YouTube Video](https://img.shields.io/youtube/views/GW_ZNdRrFtg?label=Tutorial++Heroku++&style=social)](https://youtu.be/GW_ZNdRrFtg)
-- [![YouTube Video](https://img.shields.io/youtube/views/6XIjTbumJYY?label=Tutorial++Mogenius++&style=social)](https://youtu.be/6XIjTbumJYY)
-- [![YouTube Video](https://img.shields.io/youtube/views/sYgy4_8i7c8?label=Tutorial++Google++Colab++&style=social)](https://youtu.be/sYgy4_8i7c8)
-- [![YouTube Video](https://img.shields.io/youtube/views/yC9z3kYKIgU?label=Tutorial++VPS++&style=social)](https://youtu.be/yC9z3kYKIgU)
-- [![YouTube Video](https://img.shields.io/youtube/views/ePpMvL6kdvI?label=Tutorial++VPS++Mobile++&style=social)](https://youtu.be/ePpMvL6kdvI)
 
-----
 
-<h3 align="center">Deployment</h3>
 
-  - Heroku: [Click Here](https://github.com/BWFTIME/BWFSPAM)
-  - Mogenius: [Click Here](https://youtu.be/6XIjTbumJYY)
-  - Google Colab: [Click Here](https://youtu.be/sYgy4_8i7c8)
-  - VPS/Local hosting: [Click here](https://github.com/RiZoeLX/BWFSPAM/blob/main/resources/local.md)
-  - Termux: [Click Here](https://github.com/RiZoeLX/BWFSPAM/blob/main/resources/termux.md) `Some errors!`
 
-----
+### 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦 𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𝐅𝐫𝐨𝐦 𝐇𝐞𝐫𝐞
 
-<h4> License </h4>
+[𓊈 𝐒𝐭𝐫𝐢𝐧𝐠  𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𓊉](https://t.me/STRINGKINGBOT)
 
-[![License](https://www.gnu.org/graphics/gplv3-or-later.png)](LICENSE)   
-BWFSPAM is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/gplv3-or-later.pngl) v3 or later.
-
-<h3>Credits</h3>
-
-  - <b> [RiZoeL](https://github.com/MrRizoel) : Dev/creator of BWFSPAM </b> 
-  - <b> [Pyrogram](https://github.com/pyrogram/pyrogram) : Python Library used in BWFSPAM
