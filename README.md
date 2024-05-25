@@ -1,6 +1,6 @@
 ### 🥀 𝐁𝐞𝐬𝐭 𝐀𝐝𝐯𝐚𝐧𝐜𝐞𝐝 𝐒𝐮𝐩𝐬𝐫𝐟𝐚𝐬𝐭 𝐚𝐧𝐝 𝐒𝐦𝐚𝐫𝐭 𝐁𝐨𝐭 𝐒𝐨𝐮𝐫𝐜𝐞 𝐅𝐨𝐫 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐆𝐫𝐨𝐮𝐩𝐬 𝐚𝐧𝐝 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 ✨...
 
-<p align="center"><a href="https://t.me/BWF_MUSIC1">https://telegra.ph/file/1b1b2a746656aebf77d6d.jpg<img src=""></a></p>
+<p align="center"><a href="https://t.me/BWF_MUSIC1"><img src="https://telegra.ph/file/1b1b2a746656aebf77d6d.jpg"></a></p>
 
 ##  Deploy to Heroku  🤝
 
